@@ -56,33 +56,38 @@ export class SearchService {
 
 @Component({
   selector: "app",
-  template: ` 
-<form class="form-inline">
-	<div class="form-group">
-		<input type="search"
-		       class="form-control"
-		       placeholder="Enter search string"
-		       #search>
-	</div>
-	<button type="button" class="btn btn-primary" (click)="doSearch(search.value)">Search</button>
-</form>
+  template: `
+    <form class="form-inline">
+      <div class="form-group">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Busca una canción"
+          #search
+        />
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="doSearch(search.value)"
+      >
+        Buscar
+      </button>
+    </form>
 
-<hr/>
+    <hr />
 
-<div class="text-center">
-  <p class="lead" *ngIf="loading">Loading...</p>
-</div>
+    <div class="text-center">
+      <p class="lead" *ngIf="loading">Loading...</p>
+    </div>
 
-<ul class="list-group">
-	<li class="list-group-item"
-	    *ngFor="let track of itunes.results">
-		<img src="{{track.thumbnail}}">
-		<a target="_blank"
-		   href="{{track.link}}">{{ track.track }}
-		</a>
-	</li>
-</ul>
- `
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let track of itunes.results">
+        <img src="{{ track.thumbnail }}" />
+        <a target="_blank" href="{{ track.link }}">{{ track.track }} </a>
+      </li>
+    </ul>
+  `
 })
 class AppComponent {
   private loading: boolean = false;
